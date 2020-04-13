@@ -57,4 +57,33 @@ public class SortUtils {
 
         return arraySort;
     }
+
+    /***
+     * 冒泡排序
+     * 比较相邻的元素。如果第一个比第二个大，就交换他们两个。
+     * 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。
+     * 针对所有的元素重复以上的步骤，除了最后一个。
+     * 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较
+     * @param arraySort
+     * @return
+     */
+    public static int[] sortResult2(int[] arraySort){
+        for(int i=1;i<arraySort.length;i++){
+            boolean sortFinish = true;
+            for(int j=0;j<arraySort.length-i;j++){
+                //比较相邻的两个数，如果左边比右边大，就交换位置
+                if(arraySort[j]>arraySort[j+1]){
+                    int temp = arraySort[j];
+                    arraySort[j] = arraySort[j+1];
+                    arraySort[j+1] = temp;
+                    sortFinish = false;
+                }
+            }
+            //如果没有符合 左边比右边大的数据，表示已经排序完成
+            if(sortFinish){
+                break;
+            }
+        }
+        return arraySort;
+    }
 }
